@@ -1,23 +1,17 @@
+---
+layout: default
+---
+<p>Just your average everyday nerd, developer, motorcycle enthusiast, and dog dad.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Homepage</title>
-  <style>
-    body {
-      max-width: 800px;
-      margin: 80px auto;
-      padding: 0 24px;
-      font-family: system-ui, sans-serif;
-      line-height: 1.6;
-    }
-  </style>
-</head>
-<body>
-  <h1>Hello, World!</h1>
-  <p>Welcome to my GitHub Pages website.</p>
-</body>
-</html>
+<p>The business side of this blog is mostly about code, design, and programming tips and tools.</p>
 
+<p>I also like to post about my hobbies — motorcycles, Rubik's cubes, dogs, nerdy home projects, archery, and whatever else I seem to be obsessing over that month.</p>
+
+<p>Hope you enjoy what you're reading here!</p>
+
+<h2 class="post-list-heading">Latest Posts</h2>
+<ul class="post-list">
+  {% for post in paginator.posts limit:5 %}
+  <li><span class="post-meta">{{ post.date | date: "%b %d, %Y" }}</span><h3><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3></li>
+  {% endfor %}
+</ul>

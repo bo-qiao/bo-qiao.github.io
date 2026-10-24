@@ -1,0 +1,30 @@
+# Site settings
+title: "Bos Mangel"
+tagline: "Notes on code, design, and the places I've been."
+description: "A personal blog about software, design, and life in California."
+author: "Bos Mangel"
+email: "hello@example.com"
+url: "https://bo-qiao.github.io"
+baseurl: ""
+
+paginate: 5
+paginate_path: /page/:num
+
+markdown: kramdown
+highlighter: rouge
+theme: null
+plugins:
+  - jekyll-paginate
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      read_time: true

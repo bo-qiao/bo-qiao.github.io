@@ -1,23 +1,10 @@
+---
+layout: default
+---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Homepage</title>
-  <style>
-    body {
-      max-width: 800px;
-      margin: 80px auto;
-      padding: 0 24px;
-      font-family: system-ui, sans-serif;
-      line-height: 1.6;
-    }
-  </style>
-</head>
-<body>
-  <h1>Hello, World!</h1>
-  <p>Welcome to my GitHub Pages website.</p>
-</body>
-</html>
-
+<h2 class="post-list-heading">Latest Posts</h2>
+<ul class="post-list">
+  {% for post in paginator.posts limit:5 %}
+  <li><span class="post-meta">{{ post.date | date: "%b %d, %Y" }}</span> <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>

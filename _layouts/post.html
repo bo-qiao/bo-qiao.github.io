@@ -5,12 +5,9 @@ layout: default
   <header class="post-header">
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %d, %Y" }}</time>
-      {% if page.categories %}<span class="post-cat">{{ page.categories | join: " · " }}</span>{% endif %}
+      · {% assign words = content | strip_html | number_of_words %}{% assign read_time = words | divided_by: 200 | plus: 1 %}{{ read_time }} min read
     </p>
     <h1 class="post-title">{{ page.title }}</h1>
-    {% if page.excerpt %}
-    <p class="post-lead">{{ page.excerpt | strip_html | truncate: 180 }}</p>
-    {% endif %}
   </header>
   <div class="post-content">
     {{ content }}

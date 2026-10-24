@@ -40,15 +40,30 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
 .wrapper { max-width: var(--wrapper-w); margin: 0 auto; padding: 0 24px; }
 
 /* Header */
+.site-header .site-nav {
+  justify-content: flex-end;
+  padding: 14px 0;
+}
 .site-header {
   position: sticky;
   top: 0;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+  z-index: 10;
 }
 .site-title { display: block; padding: 18px 0; font-size: 1.3rem; font-weight: 650; }
 .site-title:hover { color: var(--text); }
 .site-nav { display: flex; align-items: center; gap: 16px; padding: 10px 0; }
+.side-nav-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+.site-sidebar-right {
+  display: flex;
+  justify-content: flex-start;
+}
 .page-link { color: var(--text-muted); font-size: 0.9rem; }
 .page-link:hover { color: var(--accent); }
 
@@ -68,10 +83,17 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
   padding: 0;
 }
 .post-list > li {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 6px 0;
+  line-height: 1.4;
+  border-bottom: none;
 }
 .post-list > li:last-child { border-bottom: none; }
+.post-list .post-meta {
+  display: inline;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-right: 8px;
+}
 .post-meta {
   display: block;
   font-size: 0.8rem;
@@ -147,11 +169,11 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
 /* Site layout with sidebar */
 .site-layout {
   display: grid;
-  grid-template-columns: 160px 1fr;
+  grid-template-columns: 160px 1fr 160px;
   gap: 28px;
-  max-width: 960px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 32px 8px 32px 24px;
   align-items: start;
   flex: 1 0 auto;
   width: 100%;
@@ -207,6 +229,7 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
   gap: 6px;
   width: 100%;
   padding: 0;
+  margin-top: 35vh;
 }
 
 .site-sidebar .page-link {
@@ -244,6 +267,9 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
   .site-sidebar {
     position: static;
   }
+  .site-sidebar-right {
+    position: static;
+  }
 }
 .site-footer {
   border-top: 1px solid var(--border);
@@ -268,8 +294,8 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
 .gallery-empty { color: var(--text-muted); font-style: italic; }
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
 }
 .gallery-item {
   margin: 0;

@@ -12,13 +12,7 @@
   <div class="site-layout">
     <aside class="site-sidebar">
       <div class="sidebar-inner">
-        <h1 class="sidebar-name">{{ site.title }}</h1>
         <img class="avatar" src="{{ '/assets/images/avatar.png' | relative_url }}" alt="{{ site.title }}">
-        <nav class="site-nav">
-          <a class="page-link" href="{{ '/' | relative_url }}">Posts</a>
-          <a class="page-link" href="{{ '/gallery.html' | relative_url }}">Gallery</a>
-          <a class="page-link" href="{{ '/about.html' | relative_url }}">About</a>
-        </nav>
       </div>
     </aside>
 
@@ -27,12 +21,15 @@
         {{ content }}
       </div>
     </main>
+
+    <aside class="site-sidebar-right">
+      <nav class="site-nav side-nav-right">
+        <a class="page-link" href="{{ '/' | relative_url }}">Posts</a>
+        <a class="page-link" href="{{ '/gallery.html' | relative_url }}">Gallery</a>
+        <a class="page-link" href="{{ '/about.html' | relative_url }}">About</a>
+      </nav>
+    </aside>
   </div>
 
-  <footer class="site-footer">
-    <div class="wrapper">
-      <p class="copyright">&copy; 2026 Bo Qiao. All rights reserved.</p>
-    </div>
-  </footer>
 </body>
 </html>

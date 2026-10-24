@@ -1,17 +1,10 @@
 ---
 layout: default
 ---
-<p>Just your average everyday nerd, developer, motorcycle enthusiast, and dog dad.</p>
-
-<p>The business side of this blog is mostly about code, design, and programming tips and tools.</p>
-
-<p>I also like to post about my hobbies — motorcycles, Rubik's cubes, dogs, nerdy home projects, archery, and whatever else I seem to be obsessing over that month.</p>
-
-<p>Hope you enjoy what you're reading here!</p>
 
 <h2 class="post-list-heading">Latest Posts</h2>
 <ul class="post-list">
   {% for post in paginator.posts limit:5 %}
-  <li><span class="post-meta">{{ post.date | date: "%b %d, %Y" }}</span><h3><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3></li>
+  <li><span class="post-meta">{{ post.date | date: "%b %d, %Y" }}</span> <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>

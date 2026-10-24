@@ -22,6 +22,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -55,8 +58,8 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
 .post-list-heading { margin-top: 0; margin-bottom: 16px; }
 
 /* Intro paragraphs */
-.page-content > p { margin-top: 0; }
-.page-content > p + p { margin-top: 16px; }
+.page-content .wrapper > p { margin-top: 0; }
+.page-content .wrapper > p + p { margin-top: 16px; }
 
 /* Latest posts */
 .post-list {
@@ -133,16 +136,120 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
 
 .site-footer .copyright {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
   color: var(--text-muted);
-  margin: 16px 0 0;
+  margin: 0;
+  padding: 12px 0 4px;
+  opacity: 0.85;
 }
 
-/* Footer */
+/* Site layout with sidebar */
+.site-layout {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 28px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  align-items: start;
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.site-sidebar {
+  position: sticky;
+  top: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 8px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 60%;
+  transform: scale(1.2);
+  border: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.sidebar-name {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sidebar-tagline {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.site-sidebar .site-nav {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  width: 100%;
+  padding: 0;
+}
+
+.site-sidebar .page-link {
+  display: block;
+  padding: 6px 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.site-sidebar .page-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Ensure main content area keeps readable width */
+.page-content {
+  padding: 0;
+  min-width: 0;
+}
+
+.page-content .wrapper {
+  max-width: var(--wrapper-w);
+  padding: 0;
+}
+
+@media (max-width: 820px) {
+  .site-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 16px;
+  }
+  .site-sidebar {
+    position: static;
+  }
+}
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 32px 0 24px;
+  padding: 12px 0 8px;
   background: var(--footer-bg);
+  flex-shrink: 0;
 }
 .footer-heading { margin-top: 0; }
 .footer-col-wrapper { display: flex; gap: 32px; }
@@ -155,3 +262,37 @@ code, pre { font-family: "SF Mono", "Consolas", "Menlo", monospace; }
 .social-media-list li { margin: 6px 0; }
 .social-media-list .username { color: var(--text); font-size: 0.85rem; }
 .footer-col-3 p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+/* Gallery */
+.gallery-intro { color: var(--text-muted); margin: 0 0 24px; }
+.gallery-empty { color: var(--text-muted); font-style: italic; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.gallery-item {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.gallery-item a:hover img { transform: scale(1.05); }
+.gallery-item figcaption {
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

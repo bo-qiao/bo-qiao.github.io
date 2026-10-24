@@ -1,0 +1,24 @@
+---
+layout: default
+title: Gallery
+---
+
+<section class="gallery">
+  <h1 class="page-heading">Gallery</h1>
+  <p class="gallery-intro">Photos I've taken and places I've been.</p>
+
+  {% if site.data.gallery and site.data.gallery.size > 0 %}
+  <div class="gallery-grid">
+    {% for photo in site.data.gallery %}
+    <figure class="gallery-item">
+      <a href="{{ '/assets/images/gallery/' | append: photo.file | relative_url }}" target="_blank" rel="noopener">
+        <img src="{{ '/assets/images/gallery/' | append: photo.file | relative_url }}" alt="{{ photo.alt | default: photo.file }}" loading="lazy">
+      </a>
+      {% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="gallery-empty">No photos yet. Drop images into <code>assets/images/gallery/</code> and list them in <code>_data/gallery.yml</code>.</p>
+  {% endif %}
+</section>

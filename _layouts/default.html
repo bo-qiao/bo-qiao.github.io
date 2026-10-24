@@ -9,14 +9,18 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%234cc9f0'/%3E%3Cpath%20d='M4%2022%20L12%2010%20L16%2016%20L20%206%20L28%2015%20L28%2028%20L4%2028%20Z'%20fill='%23ffffff'/%3E%3C/svg%3E">
 </head>
 <body>
-  <div class="wrapper">
-    <header class="site-header">
-      <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      <nav class="site-nav">
-        <a class="page-link" href="{{ '/' | relative_url }}">Posts</a>
-        <a class="page-link" href="{{ '/about.html' | relative_url }}">About</a>
-      </nav>
-    </header>
+  <div class="site-layout">
+    <aside class="site-sidebar">
+      <div class="sidebar-inner">
+        <h1 class="sidebar-name">{{ site.title }}</h1>
+        <img class="avatar" src="{{ '/assets/images/avatar.png' | relative_url }}" alt="{{ site.title }}">
+        <nav class="site-nav">
+          <a class="page-link" href="{{ '/' | relative_url }}">Posts</a>
+          <a class="page-link" href="{{ '/gallery.html' | relative_url }}">Gallery</a>
+          <a class="page-link" href="{{ '/about.html' | relative_url }}">About</a>
+        </nav>
+      </div>
+    </aside>
 
     <main class="page-content">
       <div class="wrapper">
@@ -27,22 +31,7 @@
 
   <footer class="site-footer">
     <div class="wrapper">
-      <div class="footer-col-wrapper">
-        <div class="footer-col footer-col-1">
-          <ul class="contact-list">
-            <li class="p-name">Bos Mangel</li>
-          </ul>
-        </div>
-        <div class="footer-col footer-col-2">
-          <ul class="social-media-list">
-            <li><a href="{{ '/' | relative_url }}"><span class="username">home</span></a></li>
-          </ul>
-        </div>
-        <div class="footer-col footer-col-3">
-          <p>{{ site.tagline }}</p>
-        </div>
-      </div>
-      <p class="copyright">&copy; 2026 Bo Qiao</p>
+      <p class="copyright">&copy; 2026 Bo Qiao. All rights reserved.</p>
     </div>
   </footer>
 </body>

@@ -16,6 +16,11 @@ theme: null
 plugins:
   - jekyll-paginate
 
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
 defaults:
   - scope:
       path: ""

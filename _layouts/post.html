@@ -19,4 +19,83 @@ layout: default
     {% endfor %}
   </div>
   {% endunless %}
+
+  <section class="comments">
+    <h2>Comments</h2>
+    <form class="comment-form" id="comment-form">
+      <label for="comment-name">Name</label>
+      <input type="text" id="comment-name" name="name" placeholder="Your name" required>
+      <label for="comment-text">Comment</label>
+      <textarea id="comment-text" name="comment" rows="4" placeholder="Leave a comment..." required></textarea>
+      <button type="submit">Post comment</button>
+    </form>
+    <ul class="comment-list" id="comment-list"></ul>
+  </section>
+
+  <script>
+    (function () {
+      var form = document.getElementById('comment-form');
+      var list = document.getElementById('comment-list');
+      var storageKey = 'comments:' + window.location.pathname;
+      function load() {
+        try { return JSON.parse(localStorage.getItem(storageKey) || '[]'); }
+        catch (e) { return []; }
+      }
+      function save(items) { localStorage.setItem(storageKey, JSON.stringify(items)); }
+      function render() {
+        list.innerHTML = '';
+        load().forEach(function (c, i) {
+          var li = document.createElement('li');
+          li.className = 'comment';
+          li.innerHTML = '<strong class="comment-name"></strong><p class="comment-text"></p>';
+          li.querySelector('.comment-name').textContent = c.name;
+          li.querySelector('.comment-text').textContent = c.text;
+
+          var actions = document.createElement('div');
+          actions.className = 'comment-actions';
+
+          var editBtn = document.createElement('button');
+          editBtn.className = 'comment-edit';
+          editBtn.textContent = 'Edit';
+          editBtn.addEventListener('click', function () {
+            var newText = window.prompt('Edit comment:', c.text);
+            if (newText === null) return;
+            newText = newText.trim();
+            if (!newText) return;
+            var items = load();
+            items[i].text = newText;
+            save(items);
+            render();
+          });
+          actions.appendChild(editBtn);
+
+          var delBtn = document.createElement('button');
+          delBtn.className = 'comment-delete';
+          delBtn.textContent = 'Delete';
+          delBtn.addEventListener('click', function () {
+            var items = load();
+            items.splice(i, 1);
+            save(items);
+            render();
+          });
+          actions.appendChild(delBtn);
+
+          li.appendChild(actions);
+          list.appendChild(li);
+        });
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('comment-name').value.trim();
+        var text = document.getElementById('comment-text').value.trim();
+        if (!name || !text) return;
+        var items = load();
+        items.push({ name: name, text: text, date: new Date().toISOString() });
+        save(items);
+        form.reset();
+        render();
+      });
+      render();
+    })();
+  </script>
 </article>

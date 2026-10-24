@@ -5,7 +5,7 @@ date: 2026-10-24
 tags: [agents, AI, permissions, productivity]
 ---
 
-What we just did is very funny. A simple task — create a pull request and merge it — and the agent asked me for permission at least four times along the way. Then it told me the prompts cannot be skipped.
+I recently asked a personal agent to do a simple task: create a pull request and merge it. It asked me for permission at least four times along the way — and then told me the prompts cannot be skipped. That's very funny.
 
 It reminded me of the early days of coding agents.
 

@@ -1,69 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Sphere from "./components/Sphere";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
+    <main>
+      <nav className="nav">
+        <a href="#" className="logo">
+          HF<span>0</span>
+        </a>
+        <div className="nav-right">
+          <a href="#">THESIS</a>
+          <a href="#">TEAM</a>
+          <a
+            href="https://www.hf0.com"
+            target="_blank"
+            rel="noreferrer"
+            className="apply-link"
+          >
+            APPLY ↗
+          </a>
+        </div>
+      </nav>
+
+      <section className="hero">
+        <div className="hero-label">
+          <span>HACKER FELLOWSHIP ZERO</span>
+          <span>EST. SAN FRANCISCO</span>
+        </div>
+
+        <div className="sphere-area">
+          <div className="sphere">
+            <Sphere />
+          </div>
+          <div className="sphere-shadow" />
+        </div>
+
+        <div className="hero-content">
           <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
+            The residency
+            <br />
+            for repeat founders.
           </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
+
+          <div className="hero-bottom">
+            <p>
+              A 12-week residency for exceptional
+              <br />
+              technical founders building ambitious companies.
+            </p>
+
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+              href="https://www.hf0.com"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
+              className="round-button"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              APPLY NOW <span>↗</span>
+            </a>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <div className="vertical-text">BUILD SOMETHING GREAT</div>
+      </section>
+    </main>
   );
 }
